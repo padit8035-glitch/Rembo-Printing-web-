@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rembo Printing — Percetakan Modern & Terpercaya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF8F2;
+    --paper-dim:#F1ECE0;
+    --ink:#15130F;
+    --ink-soft:#54503F;
+    --navy:#182848;
+    --navy-2:#233563;
+    --magenta:#E31C79;
+    --cyan:#00AEEF;
+    --yellow:#FFD400;
+    --key:#141210;
+    --line:#DCD5C3;
+    --radius:2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  .mono{font-family:'IBM Plex Mono',monospace;letter-spacing:0.01em;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;margin:0;color:var(--ink);}
+  p{margin:0;}
+  .rule{height:1px;background:var(--line);border:none;}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:60;
+    background:rgba(250,248,242,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 28px;max-width:1180px;margin:0 auto;
+  }
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .brand-mark{width:26px;height:26px;flex:none;}
+  .brand-name{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--navy);letter-spacing:0.01em;}
+  nav.links{display:flex;gap:32px;font-size:14.5px;}
+  nav.links a{text-decoration:none;color:var(--ink-soft);transition:color .15s;}
+  nav.links a:hover{color:var(--navy);}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 20px;border-radius:var(--radius);
+    font-size:14.5px;font-weight:600;text-decoration:none;
+    border:1px solid var(--navy);cursor:pointer;
+    transition:transform .12s ease, background .15s ease, color .15s ease;
+  }
+  .btn-primary{background:var(--navy);color:var(--paper);}
+  .btn-primary:hover{background:var(--navy-2);}
+  .btn-ghost{background:transparent;color:var(--navy);}
+  .btn-ghost:hover{background:var(--navy);color:var(--paper);}
+  .btn:active{transform:scale(.97);}
+  .nav-cta{display:flex;align-items:center;gap:18px;}
+  .burger{display:none;background:none;border:none;cursor:pointer;padding:6px;}
+  .burger span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:88px 0 96px;position:relative;overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:40px;align-items:center;}
+  .eyebrow-line{
+    display:flex;align-items:center;gap:10px;margin-bottom:22px;
+    font-size:13px;color:var(--ink-soft);
+  }
+  .eyebrow-line .dot{width:7px;height:7px;border-radius:50%;background:var(--magenta);}
+  h1.hero-title{
+    font-size:clamp(38px,5.4vw,64px);
+    line-height:1.04;
+    letter-spacing:-0.01em;
+    max-width:15ch;
+  }
+  h1.hero-title em{font-style:italic;color:var(--navy-2);}
+  .hero-sub{
+    margin-top:22px;font-size:17.5px;color:var(--ink-soft);
+    max-width:46ch;
+  }
+  .hero-actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;}
+  .hero-specs{
+    display:flex;gap:26px;margin-top:52px;flex-wrap:wrap;
+  }
+  .spec{font-size:13px;color:var(--ink-soft);}
+  .spec b{display:block;font-family:'Fraunces',serif;font-size:26px;color:var(--ink);font-weight:600;}
+
+  .regmark{position:relative;width:100%;aspect-ratio:1/1;max-width:400px;margin:0 auto;}
+  .regmark svg{width:100%;height:100%;}
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section{padding:88px 0;}
+  .section-head{
+    display:grid;grid-template-columns:1fr 1fr;gap:40px;
+    margin-bottom:52px;align-items:end;
+  }
+  .section-head h2{font-size:clamp(28px,3.4vw,40px);max-width:14ch;}
+  .section-head p{color:var(--ink-soft);font-size:16px;max-width:42ch;}
+  .tag{
+    display:inline-block;font-size:12.5px;color:var(--navy-2);
+    margin-bottom:14px;
+  }
+  .bg-dim{background:var(--paper-dim);}
+
+  /* ---------- SERVICES ---------- */
+  .service-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--line);border-left:1px solid var(--line);
+  }
+  .service-card{
+    border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:36px 30px;position:relative;
+  }
+  .service-card .num{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);}
+  .service-card h3{font-size:20px;margin:16px 0 10px;}
+  .service-card p{color:var(--ink-soft);font-size:14.5px;}
+  .service-card .icon{width:34px;height:34px;margin-bottom:6px;color:var(--navy);}
+
+  /* ---------- MATERIALS ---------- */
+  .mat-table{width:100%;border-collapse:collapse;font-size:14.5px;}
+  .mat-table th{
+    text-align:left;font-family:'IBM Plex Mono',monospace;font-weight:500;
+    font-size:12px;color:var(--ink-soft);padding:10px 14px;
+    border-bottom:1px solid var(--ink);
+  }
+  .mat-table td{padding:16px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+  .mat-table tr:hover td{background:rgba(24,40,72,0.03);}
+  .mat-table .use{font-weight:600;}
+  .mat-table .swatch{
+    display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;
+  }
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);}
+
+  /* ---------- PROCESS ---------- */
+  .process{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+  .process-step{padding:0 24px 0 0;position:relative;}
+  .process-step:not(:last-child)::after{
+    content:'';position:absolute;top:11px;right:0;width:100%;height:1px;background:var(--line);
+    display:none;
+  }
+  .process-step .step-no{
+    font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--magenta);margin-bottom:14px;
+  }
+  .process-step h3{font-size:17px;margin-bottom:8px;}
+  .process-step p{color:var(--ink-soft);font-size:14px;}
+
+  /* ---------- AI PROMO ---------- */
+  .ai-promo{
+    background:var(--navy);color:var(--paper);border-radius:4px;
+    padding:56px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:center;
+  }
+  .ai-promo h2{color:var(--paper);font-size:clamp(26px,3vw,34px);max-width:16ch;}
+  .ai-promo p{color:#C9D2E8;margin-top:16px;font-size:15.5px;max-width:44ch;}
+  .ai-promo .btn-primary{background:var(--paper);color:var(--navy);border-color:var(--paper);}
+  .ai-promo .btn-primary:hover{background:#fff;}
+  .ai-chat-preview{
+    background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);
+    border-radius:4px;padding:18px;font-size:13.5px;
+  }
+  .ai-chat-preview .msg{padding:10px 13px;border-radius:4px;margin-bottom:10px;max-width:85%;}
+  .ai-chat-preview .msg.user{background:rgba(255,255,255,0.1);margin-left:auto;}
+  .ai-chat-preview .msg.bot{background:rgba(255,255,255,0.94);color:var(--ink);}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);}
+  .testi-card{background:var(--paper);padding:30px;}
+  .testi-card p.quote{font-size:15px;color:var(--ink);}
+  .testi-card .who{margin-top:18px;font-size:13px;color:var(--ink-soft);}
+  .testi-card .who b{color:var(--ink);}
+
+  /* ---------- CTA ---------- */
+  .cta-band{
+    text-align:left;padding:70px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  }
+  .cta-band h2{font-size:clamp(26px,3.4vw,36px);max-width:16ch;}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:56px 0 30px;}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px;}
+  .foot-col h4{font-size:13px;color:var(--ink-soft);margin-bottom:14px;font-weight:600;}
+  .foot-col a{display:block;text-decoration:none;color:var(--ink);font-size:14.5px;margin-bottom:9px;}
+  .foot-col a:hover{color:var(--navy-2);}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--ink-soft);flex-wrap:wrap;gap:10px;}
+
+  /* ---------- CHATBOT WIDGET ---------- */
+  #chat-toggle{
+    position:fixed;bottom:26px;right:26px;z-index:100;
+    width:60px;height:60px;border-radius:50%;
+    background:var(--navy);border:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 24px rgba(21,19,15,0.28);
+    transition:transform .15s ease;
+  }
+  #chat-toggle:hover{transform:scale(1.06);}
+  #chat-toggle svg{width:26px;height:26px;}
+  #chat-panel{
+    position:fixed;bottom:100px;right:26px;z-index:100;
+    width:360px;max-width:calc(100vw - 32px);height:min(520px,70vh);
+    background:var(--paper);border:1px solid var(--line);border-radius:6px;
+    box-shadow:0 20px 50px rgba(21,19,15,0.22);
+    display:none;flex-direction:column;overflow:hidden;
+  }
+  #chat-panel.open{display:flex;}
+  .chat-head{
+    background:var(--navy);color:var(--paper);padding:16px 18px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .chat-head .dotcluster{width:22px;height:22px;flex:none;}
+  .chat-head-text{flex:1;}
+  .chat-head-text b{display:block;font-size:14.5px;}
+  .chat-head-text span{font-size:12px;color:#B9C4DE;}
+  .chat-close{background:none;border:none;color:#D8DEED;cursor:pointer;font-size:18px;line-height:1;padding:4px;}
+  #chat-messages{
+    flex:1;overflow-y:auto;padding:16px 16px 6px;
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .bubble{max-width:84%;padding:10px 13px;border-radius:10px;font-size:13.8px;line-height:1.45;}
+  .bubble.bot{background:var(--paper-dim);color:var(--ink);border-bottom-left-radius:2px;align-self:flex-start;}
+  .bubble.user{background:var(--navy);color:var(--paper);border-bottom-right-radius:2px;align-self:flex-end;}
+  .bubble.typing{display:flex;gap:4px;padding:14px 15px;}
+  .bubble.typing span{width:6px;height:6px;border-radius:50%;background:var(--ink-soft);opacity:.5;animation:blink 1.1s infinite;}
+  .bubble.typing span:nth-child(2){animation-delay:.18s;}
+  .bubble.typing span:nth-child(3){animation-delay:.36s;}
+  @keyframes blink{0%,80%,100%{opacity:.3;}40%{opacity:1;}}
+  .quick-replies{display:flex;flex-wrap:wrap;gap:7px;padding:0 16px 12px;}
+  .qr-btn{
+    font-size:12.5px;padding:7px 11px;border-radius:20px;border:1px solid var(--line);
+    background:var(--paper);cursor:pointer;color:var(--ink-soft);transition:.15s;
+  }
+  .qr-btn:hover{border-color:var(--navy);color:var(--navy);}
+  .chat-input-row{
+    display:flex;gap:8px;padding:12px;border-top:1px solid var(--line);background:var(--paper);
+  }
+  #chat-input{
+    flex:1;border:1px solid var(--line);border-radius:20px;padding:10px 15px;
+    font-family:'Inter',sans-serif;font-size:13.8px;outline:none;background:#fff;
+  }
+  #chat-input:focus{border-color:var(--navy);}
+  #chat-send{
+    width:38px;height:38px;border-radius:50%;background:var(--navy);border:none;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none;
+  }
+  #chat-send svg{width:16px;height:16px;}
+
+  @media (max-width:880px){
+    nav.links{display:none;}
+    .burger{display:block;}
+    .hero-grid{grid-template-columns:1fr;}
+    .regmark{order:-1;max-width:220px;margin-bottom:10px;}
+    .section-head{grid-template-columns:1fr;}
+    .service-grid{grid-template-columns:1fr 1fr;}
+    .process{grid-template-columns:1fr 1fr;row-gap:28px;}
+    .ai-promo{grid-template-columns:1fr;padding:34px 24px;}
+    .testi-grid{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    #chat-panel{right:16px;bottom:88px;width:calc(100vw - 32px);}
+    #chat-toggle{right:16px;bottom:16px;}
+  }
+  @media (max-width:520px){
+    .service-grid{grid-template-columns:1fr;}
+    .process{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr;}
+    .hero-actions .btn{width:100%;justify-content:center;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40">
+        <circle cx="17" cy="17" r="9" fill="#00AEEF" opacity="0.85" style="mix-blend-mode:multiply"/>
+        <circle cx="23" cy="17" r="9" fill="#E31C79" opacity="0.85" style="mix-blend-mode:multiply"/>
+        <circle cx="20" cy="23" r="9" fill="#FFD400" opacity="0.85" style="mix-blend-mode:multiply"/>
+      </svg>
+      <span class="brand-name">Rembo Printing</span>
+    </a>
+    <nav class="links">
+      <a href="#layanan">Layanan</a>
+      <a href="#bahan-ukuran">Bahan &amp; Ukuran</a>
+      <a href="#proses">Proses</a>
+      <a href="#testimoni">Testimoni</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#kontak" class="btn btn-primary" style="display:none" id="nav-cta-btn">Konsultasi Gratis</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow-line"><span class="dot"></span><span class="mono">Percetakan offset &amp; digital — sejak 2009</span></div>
+      <h1 class="hero-title">Cetak presisi, dari <em>satu lembar</em> sampai satu kontainer.</h1>
+      <p class="hero-sub">Rembo Printing melayani kebutuhan cetak bisnis, personal, dan korporat: brosur, kemasan, banner, buku, hingga merchandise. Nggak yakin bahan atau ukuran apa yang cocok? Tanya langsung ke asisten AI kami di pojok kanan bawah.</p>
+      <div class="hero-actions">
+        <a href="#kontak" class="btn btn-primary">Konsultasi Gratis</a>
+        <button class="btn btn-ghost" onclick="openChat()">Tanya AI Rembo</button>
+      </div>
+      <div class="hero-specs">
+        <div class="spec"><b>15+</b>Tahun beroperasi</div>
+        <div class="spec"><b>4.200+</b>Klien terlayani</div>
+        <div class="spec"><b>24 jam</b>Estimasi cetak digital</div>
+      </div>
+    </div>
+    <div class="regmark">
+      <svg viewBox="0 0 400 400">
+        <g style="mix-blend-mode:multiply">
+          <circle cx="175" cy="175" r="90" fill="#00AEEF"/>
+          <circle cx="225" cy="175" r="90" fill="#E31C79"/>
+          <circle cx="200" cy="222" r="90" fill="#FFD400"/>
+        </g>
+        <circle cx="200" cy="191" r="140" fill="none" stroke="#15130F" stroke-width="1" opacity="0.55"/>
+        <line x1="200" y1="30" x2="200" y2="352" stroke="#15130F" stroke-width="1" opacity="0.4"/>
+        <line x1="48" y1="191" x2="352" y2="191" stroke="#15130F" stroke-width="1" opacity="0.4"/>
+        <text x="200" y="378" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#54503F">C 100 · M 90 · Y 10 · K 0</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ================= SERVICES ================= -->
+<section class="section" id="layanan">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="tag mono">002 — Layanan</span>
+        <h2>Satu percetakan, semua kebutuhan cetak bisnismu.</h2>
+      </div>
+      <p>Dari cetak satuan untuk kebutuhan mendadak sampai produksi massal untuk kebutuhan distribusi nasional — semuanya dikerjakan di fasilitas yang sama.</p>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;">
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="num">01</div>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="13" rx="1"/><path d="M3 9h18M7 21h10M9 17v4M15 17v4"/></svg>
+        <h3>Cetak Offset</h3>
+        <p>Volume besar dengan hasil warna paling konsisten — cocok untuk brosur, katalog, dan kemasan skala produksi.</p>
+      </div>
+      <div class="service-card">
+        <div class="num">02</div>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>
+        <h3>Cetak Digital</h3>
+        <p>Untuk kebutuhan cepat dan jumlah kecil-menengah: kartu nama, undangan, dokumen, dan proof sebelum produksi massal.</p>
+      </div>
+      <div class="service-card">
+        <div class="num">03</div>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20V8l8-5 8 5v12"/><path d="M4 8l8 5 8-5"/></svg>
+        <h3>Large Format &amp; Banner</h3>
+        <p>Spanduk, banner, x-banner, roll banner, hingga signage outdoor — termasuk konsultasi bahan tahan cuaca.</p>
+      </div>
+      <div class="service-card">
+        <div class="num">04</div>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+        <h3>Kemasan &amp; Packaging</h3>
+        <p>Dus custom, paper bag, label produk, hingga box makanan — dari desain struktur sampai finishing.</p>
+      </div>
+      <div class="service-card">
+        <div class="num">05</div>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg>
+        <h3>Merchandise</h3>
+        <p>Kaos, mug, totebag, gantungan kunci, hingga suvenir korporat untuk kebutuhan event dan branding.</p>
+      </div>
+      <div class="service-card">
+        <div class="num">06</div>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 4h11l5 5v11H4z"/><path d="M15 4v5h5"/></svg>
+        <h3>Buku &amp; Jilid</h3>
+        <p>Jilid softcover, hardcover, spiral, hingga lay-flat — untuk buku tahunan, laporan, dan dokumen resmi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MATERIALS & SIZE GUIDE ================= -->
+<section class="section bg-dim" id="bahan-ukuran">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="tag mono">003 — Panduan</span>
+        <h2>Bahan &amp; ukuran yang paling sering dipakai.</h2>
+      </div>
+      <p>Ringkasan cepat sebagai referensi. Untuk rekomendasi yang lebih spesifik ke kebutuhanmu, tanya AI kami — jawabannya disesuaikan sama jenis dan tujuan cetakanmu.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="mat-table">
+        <thead>
+          <tr><th>Kebutuhan</th><th>Bahan yang umum dipakai</th><th>Ukuran umum</th><th>Finishing</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="use"><span class="swatch" style="background:#00AEEF"></span>Kartu Nama</td><td>Art Carton 260–310gsm, Concord</td><td>9 × 5.5 cm</td><td>Laminasi doff / glossy, spot UV</td></tr>
+          <tr><td class="use"><span class="swatch" style="background:#E31C79"></span>Brosur &amp; Flyer</td><td>Art Paper 120–150gsm</td><td>A4, A5, F4/Folio</td><td>Laminasi doff, lipat 2/3</td></tr>
+          <tr><td class="use"><span class="swatch" style="background:#FFD400"></span>Undangan</td><td>Ivory 230–260gsm, fancy paper</td><td>Custom, umum 20 × 20 cm</td><td>Emboss, foil, spot UV</td></tr>
+          <tr><td class="use"><span class="swatch" style="background:#182848"></span>Poster</td><td>Art Paper 150gsm, Photo Paper</td><td>A3, A2, A1</td><td>Laminasi glossy (opsional)</td></tr>
+          <tr><td class="use"><span class="swatch" style="background:#00AEEF"></span>Banner Outdoor</td><td>Flexi Korea/China, Albatros</td><td>Custom, umum 60×160 cm – 4×6 m</td><td>Mata ayam (eyelet)</td></tr>
+          <tr><td class="use"><span class="swatch" style="background:#E31C79"></span>Buku / Laporan</td><td>HVS 70–80gsm (isi), Art Carton (cover)</td><td>A5, B5, A4</td><td>Jilid softcover / hardcover / spiral</td></tr>
+          <tr><td class="use"><span class="swatch" style="background:#FFD400"></span>Stiker Label</td><td>Vinyl, Chromo, Kraft</td><td>Custom sesuai kemasan</td><td>Laminasi, cutting sesuai bentuk</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section class="section" id="proses">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="tag mono">004 — Alur kerja</span>
+        <h2>Empat langkah dari desain ke barang jadi.</h2>
+      </div>
+      <p>Setiap pesanan melewati pengecekan pracetak sebelum masuk mesin, supaya hasil akhir sesuai file yang kamu kirim.</p>
+    </div>
+    <div class="process">
+      <div class="process-step"><div class="step-no">01</div><h3>Kirim desain</h3><p>Upload file (PDF/AI/CDR) atau konsultasikan dulu dengan tim kami / AI Rembo.</p></div>
+      <div class="process-step"><div class="step-no">02</div><h3>Cek pracetak</h3><p>Tim kami memeriksa resolusi, warna, dan bleed sebelum naik cetak.</p></div>
+      <div class="process-step"><div class="step-no">03</div><h3>Produksi</h3><p>Dicetak sesuai mesin dan bahan yang paling sesuai kebutuhanmu.</p></div>
+      <div class="process-step"><div class="step-no">04</div><h3>Quality check &amp; kirim</h3><p>Pengecekan akhir, lalu dikemas dan dikirim atau siap diambil.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AI PROMO ================= -->
+<section class="section">
+  <div class="wrap">
+    <div class="ai-promo">
+      <div>
+        <span class="tag mono" style="color:#9FD8F5">005 — AI Assistant</span>
+        <h2>Bingung pilih bahan atau ukuran? Tanya AI Rembo aja.</h2>
+        <p>Asisten AI kami bisa bantu rekomendasi ukuran kertas, jenis bahan, sampai estimasi finishing sesuai jenis cetakan yang kamu butuhin — kapan aja, tanpa nunggu balasan CS.</p>
+        <div style="margin-top:26px;">
+          <button class="btn btn-primary" onclick="openChat()">Mulai Tanya AI</button>
+        </div>
+      </div>
+      <div class="ai-chat-preview">
+        <div class="msg user">Buat cetak menu resto, bahan apa yang cocok?</div>
+        <div class="msg bot">Untuk menu resto biasanya pakai Art Carton 260–310gsm + laminasi doff biar tahan minyak & mudah dilap. Mau sekalian cek ukurannya?</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="section" id="testimoni">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="tag mono">006 — Testimoni</span>
+        <h2>Dipercaya bisnis dari berbagai skala.</h2>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;">
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p class="quote">"Order kemasan 5000 pcs selesai lebih cepat dari estimasi, warnanya juga konsisten sama sample."</p>
+        <div class="who"><b>Dewi A.</b> — Pemilik UMKM Kuliner</div>
+      </div>
+      <div class="testi-card">
+        <p class="quote">"Chatbot-nya beneran ngebantu nentuin bahan banner buat outdoor, gak salah pilih lagi."</p>
+        <div class="who"><b>Rio S.</b> — Event Organizer</div>
+      </div>
+      <div class="testi-card">
+        <p class="quote">"Cetak buku tahunan sekolah tiap tahun di sini, hasil jilidnya rapi dan tahan lama."</p>
+        <div class="who"><b>Bu Sari</b> — Koordinator Sekolah</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="wrap">
+  <div class="cta-band">
+    <h2>Siap cetak proyek berikutnya bareng kami?</h2>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;">
+      <a href="#kontak" class="btn btn-primary">Hubungi Tim Kami</a>
+      <button class="btn btn-ghost" onclick="openChat()">Tanya AI Dulu</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer id="kontak">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a href="#top" class="brand" style="margin-bottom:14px;">
+          <svg class="brand-mark" viewBox="0 0 40 40">
+            <circle cx="17" cy="17" r="9" fill="#00AEEF" opacity="0.85" style="mix-blend-mode:multiply"/>
+            <circle cx="23" cy="17" r="9" fill="#E31C79" opacity="0.85" style="mix-blend-mode:multiply"/>
+            <circle cx="20" cy="23" r="9" fill="#FFD400" opacity="0.85" style="mix-blend-mode:multiply"/>
+          </svg>
+          <span class="brand-name">Rembo Printing</span>
+        </a>
+        <p style="color:var(--ink-soft);font-size:14px;max-width:32ch;">Jl. Industri Percetakan No. 21, Jakarta Timur. Melayani pengiriman ke seluruh Indonesia.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Layanan</h4>
+        <a href="#layanan">Cetak Offset</a>
+        <a href="#layanan">Cetak Digital</a>
+        <a href="#layanan">Large Format</a>
+        <a href="#layanan">Kemasan</a>
+      </div>
+      <div class="foot-col">
+        <h4>Perusahaan</h4>
+        <a href="#bahan-ukuran">Bahan &amp; Ukuran</a>
+        <a href="#proses">Proses Kerja</a>
+        <a href="#testimoni">Testimoni</a>
+      </div>
+      <div class="foot-col">
+        <h4>Kontak</h4>
+        <a href="#">WhatsApp CS: 0812-xxxx-xxxx</a>
+        <a href="#">halo@remboprinting.id</a>
+        <a href="#">Senin–Sabtu, 08.00–17.00</a>
+      </div>
+    </div>
+    <hr class="rule">
+    <div class="foot-bottom" style="margin-top:22px;">
+      <span>© 2026 Rembo Printing. Semua hak dilindungi.</span>
+      <span class="mono">Dibantu AI Assistant — pojok kanan bawah</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= CHATBOT WIDGET ================= -->
+<button id="chat-toggle" onclick="toggleChat()" aria-label="Buka chat AI Rembo">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#FAF8F2" stroke-width="1.6"><path d="M21 11.5a8.4 8.4 0 01-8.4 8.4 8.6 8.6 0 01-3.6-.8L3 20l1.1-4.2A8.4 8.4 0 0113.6 3.1 8.4 8.4 0 0121 11.5z"/></svg>
+</button>
+
+<div id="chat-panel">
+  <div class="chat-head">
+    <svg class="dotcluster" viewBox="0 0 40 40">
+      <circle cx="17" cy="17" r="9" fill="#00AEEF" opacity="0.9" style="mix-blend-mode:screen"/>
+      <circle cx="23" cy="17" r="9" fill="#E31C79" opacity="0.9" style="mix-blend-mode:screen"/>
+      <circle cx="20" cy="23" r="9" fill="#FFD400" opacity="0.9" style="mix-blend-mode:screen"/>
+    </svg>
+    <div class="chat-head-text">
+      <b>AI Rembo</b>
+      <span>Asisten seputar bahan & ukuran cetak</span>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div id="chat-messages"></div>
+  <div class="quick-replies" id="quick-replies"></div>
+  <div class="chat-input-row">
+    <input id="chat-input" type="text" placeholder="Tulis pertanyaanmu..." onkeydown="if(event.key==='Enter')sendMessage()">
+    <button id="chat-send" onclick="sendMessage()" aria-label="Kirim">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#FAF8F2" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  // ---------- Mobile burger simple behavior ----------
+  document.getElementById('burger').addEventListener('click', function(){
+    var links = document.querySelector('nav.links');
+    if(links.style.display === 'flex'){
+      links.style.display = 'none';
+    } else {
+      links.style.display = 'flex';
+      links.style.flexDirection = 'column';
+      links.style.position = 'fixed';
+      links.style.top = '64px';
+      links.style.right = '16px';
+      links.style.background = '#FAF8F2';
+      links.style.border = '1px solid #DCD5C3';
+      links.style.borderRadius = '6px';
+      links.style.padding = '16px 22px';
+      links.style.zIndex = '90';
+      links.style.gap = '16px';
+    }
+  });
+
+  // ---------- Chatbot knowledge base ----------
+  var chatOpened = false;
+  var kb = [
+    { kws:['kartu nama','namecard','name card'],
+      a:'Untuk kartu nama, bahan yang paling umum dipakai adalah Art Carton 260–310gsm atau Concord (kalau mau kesan elegan/bertekstur). Ukuran standarnya 9 × 5.5 cm. Finishing populer: laminasi doff, laminasi glossy, atau spot UV di bagian logo.' },
+    { kws:['brosur','flyer','pamflet'],
+      a:'Brosur biasanya pakai Art Paper 120–150gsm — cukup tebal tapi masih ringan buat dilipat. Ukuran umum A4, A5, atau F4/Folio. Kalau isinya banyak gambar/foto, finishing laminasi doff bikin warnanya lebih awet dan gak gampang kucel.' },
+    { kws:['undangan','wedding','pernikahan'],
+      a:'Untuk undangan, bahan yang sering dipakai Ivory 230–260gsm atau fancy paper (misalnya Jasmine/Millenium) buat kesan lebih premium. Ukuran fleksibel, tapi yang paling umum sekitar 20 × 20 cm. Bisa ditambah emboss, foil, atau spot UV biar lebih mewah.' },
+    { kws:['poster'],
+      a:'Poster biasanya pakai Art Paper 150gsm atau Photo Paper kalau butuh warna lebih tajam. Ukuran umum A3, A2, atau A1 tergantung ditempel di mana. Laminasi glossy opsional, bagus buat poster indoor.' },
+    { kws:['banner','spanduk','x-banner','roll banner','baliho'],
+      a:'Untuk banner/spanduk outdoor, bahan yang direkomendasikan Flexi Korea atau Flexi China (tahan panas & hujan), atau Albatros untuk yang butuh lebih ringan. Ukuran custom sesuai kebutuhan, umum mulai dari 60×160 cm sampai beberapa meter. Finishing pakai mata ayam (eyelet) di tiap sudut biar gampang dipasang.' },
+    { kws:['buku','jilid','laporan tahunan','yearbook'],
+      a:'Untuk isi buku biasanya pakai HVS 70–80gsm, dan covernya Art Carton 260gsm ke atas. Ukuran umum A5, B5, atau A4. Pilihan jilid: softcover (murah, fleksibel), hardcover (awet, kesan formal), atau spiral (bisa dibuka rata/lay-flat).' },
+    { kws:['stiker','label','sticker'],
+      a:'Untuk stiker/label produk, bahan yang umum: Vinyl (tahan air, cocok kemasan basah), Chromo (lebih ekonomis, untuk indoor), atau Kraft (kesan natural/organik). Ukuran menyesuaikan bentuk kemasanmu, dan dipotong custom sesuai desain.' },
+    { kws:['kemasan','packaging','dus','box','paper bag'],
+      a:'Untuk kemasan, kami bisa bantu dari dus custom (biasanya pakai Duplex atau Ivory board), paper bag (Art Carton atau Kraft), sampai box makanan. Ketebalan bahan disesuaikan sama berat & ukuran produk yang mau dikemas — cerita dulu produknya apa biar rekomendasinya pas.' },
+    { kws:['harga','biaya','tarif','berapa duit','budget'],
+      a:'Untuk harga, karena tergantung bahan, ukuran, jumlah, dan finishing yang dipilih, tim CS kami bisa kasih penawaran yang akurat. Chat via WhatsApp 0812-xxxx-xxxx atau isi form kontak, ya — biar dihitung sesuai kebutuhan spesifikmu.' },
+    { kws:['berapa lama','estimasi','waktu','durasi','kapan selesai'],
+      a:'Untuk cetak digital (jumlah kecil-menengah) biasanya selesai 1–2 hari kerja. Cetak offset (volume besar) sekitar 3–7 hari kerja tergantung antrian produksi dan kompleksitas finishing. Order mendesak? Sebutkan tenggat waktumu, nanti dicek ketersediaan slot produksinya.' },
+    { kws:['laminasi','finishing','doff','glossy','emboss','spot uv','foil'],
+      a:'Pilihan finishing yang tersedia: laminasi doff (matte, elegan, minim silau), laminasi glossy (warna lebih hidup/tajam), emboss (efek timbul), spot UV (mengkilap di bagian tertentu), dan foil (efek metalik). Cocoknya tergantung kesan yang mau kamu tampilkan di produkmu.' },
+    { kws:['halo','hai','hi','hello','pagi','siang','sore','malam'],
+      a:'Halo! Aku AI Rembo, siap bantu kamu nentuin bahan, ukuran, atau finishing cetakan yang paling cocok. Mau cetak apa nih?' },
+    { kws:['terima kasih','makasih','thanks'],
+      a:'Sama-sama! Kalau masih ada yang mau ditanyain seputar bahan, ukuran, atau proses cetak, tinggal ketik aja di sini.' }
+  ];
+  var fallback = 'Untuk itu aku belum punya jawaban pastinya di sini — coba tanya pakai kata kunci seperti "kartu nama", "banner", "brosur", "buku", atau "harga", atau langsung chat tim CS kami di WhatsApp 0812-xxxx-xxxx biar dibantu detail.';
+  var quickReplyOptions = ['Ukuran kartu nama?','Bahan buat banner outdoor?','Estimasi waktu cetak?','Cara cek harga?'];
+
+  function matchKB(text){
+    text = text.toLowerCase();
+    var best = null, bestScore = 0;
+    kb.forEach(function(rule){
+      var score = 0;
+      rule.kws.forEach(function(k){ if(text.indexOf(k) !== -1) score++; });
+      if(score > bestScore){ bestScore = score; best = rule; }
+    });
+    return best ? best.a : fallback;
+  }
+
+  function addBubble(text, sender){
+    var msgs = document.getElementById('chat-messages');
+    var b = document.createElement('div');
+    b.className = 'bubble ' + sender;
+    b.textContent = text;
+    msgs.appendChild(b);
+    msgs.scrollTop = msgs.scrollHeight;
+    return b;
+  }
+
+  function renderQuickReplies(){
+    var qr = document.getElementById('quick-replies');
+    qr.innerHTML = '';
+    quickReplyOptions.forEach(function(q){
+      var btn = document.createElement('button');
+      btn.className = 'qr-btn';
+      btn.textContent = q;
+      btn.onclick = function(){ submitUserText(q); };
+      qr.appendChild(btn);
+    });
+  }
+
+  function submitUserText(text){
+    if(!text.trim()) return;
+    addBubble(text, 'user');
+    document.getElementById('chat-input').value = '';
+    var qr = document.getElementById('quick-replies');
+    qr.style.display = 'none';
+
+    var msgs = document.getElementById('chat-messages');
+    var typing = document.createElement('div');
+    typing.className = 'bubble bot typing';
+    typing.innerHTML = '<span></span><span></span><span></span>';
+    msgs.appendChild(typing);
+    msgs.scrollTop = msgs.scrollHeight;
+
+    setTimeout(function(){
+      typing.remove();
+      addBubble(matchKB(text), 'bot');
+    }, 650 + Math.random()*400);
+  }
+
+  function sendMessage(){
+    var input = document.getElementById('chat-input');
+    submitUserText(input.value);
+  }
+
+  function toggleChat(){
+    var panel = document.getElementById('chat-panel');
+    var isOpen = panel.classList.toggle('open');
+    if(isOpen && !chatOpened){
+      chatOpened = true;
+      addBubble('Halo! Aku AI Rembo 👋 Aku bisa bantu rekomendasi bahan, ukuran, sampai estimasi waktu cetak. Mau tanya soal apa?', 'bot');
+      renderQuickReplies();
+    }
+  }
+
+  function openChat(){
+    var panel = document.getElementById('chat-panel');
+    if(!panel.classList.contains('open')){ toggleChat(); }
+    document.getElementById('chat-input').focus();
+  }
+</script>
+
+</body>
+</html>
