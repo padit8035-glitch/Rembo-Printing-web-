@@ -2,6 +2,8 @@
 
 Marketing site for a commercial printing business: service catalogue, material and size reference, process steps, testimonials, and a contact flow. Delivered as a single self-contained HTML file — the client can host it anywhere with no build step and no server.
 
+![Landing page preview](docs/preview.png)
+
 ## Sections
 
 | Anchor | Content |
